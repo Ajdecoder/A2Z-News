@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { Newsboard } from "./components/Newsboard";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
-  const [category, setCategory] = useState('general');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [category, setCategory] = useState("general");
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -17,18 +18,16 @@ function App() {
         const apiKey = `${process.env.REACT_APP_API_KEY}`;
         const apiUrl = `https://newsapi.org/v2/everything?q=${searchQuery}&apiKey=${apiKey}`;
 
-
         const response = await fetch(apiUrl);
         const data = await response.json();
-
 
         if (response.ok) {
           setSearchResults(data.articles);
         } else {
-          setError('Failed to fetch data');
+          setError("Failed to fetch data");
         }
       } catch (error) {
-        setError('An error occurred while fetching data');
+        setError("An error occurred while fetching data");
       } finally {
         setLoading(false);
       }
@@ -41,13 +40,22 @@ function App() {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-    setError(null); 
+    setError(null);
   };
 
   return (
-    <div className=" bg-dark">
+    <div className="bg-dark overflow-y-hidden">
       <Navbar setCategory={setCategory} onSearch={handleSearch} />
-      <Newsboard category={category} searchResults={searchResults} loading={loading} error={error} />
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <Newsboard
+          category={category}
+          searchResults={searchResults}
+          loading={loading}
+          error={error}
+        />
+      )}
     </div>
   );
 }

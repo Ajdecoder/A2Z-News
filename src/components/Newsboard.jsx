@@ -42,8 +42,8 @@ export const Newsboard = ({ category }) => {
 
   return (
     <div className="container">
-      <h2 className="text-center mt-3">
-        A2Z <span className="badge bg-warning mb-2">News</span>
+      <h2 className="text-center mt-3 font-weight-bold">
+        A2Z <span className="badge bg-warning mb-2 font-weight-bold">News</span>
       </h2>
       <hr />
       <div className="row">
