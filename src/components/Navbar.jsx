@@ -1,86 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 
-
 export const Navbar = ({ setCategory, onSearch }) => {
+  const [showCategories, setShowCategories] = useState(false);
 
-    return (
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="navbar-brand">
-                    <span className="badge bg-dark text-light rounded-circle">A2Z</span>
-                </div>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+  const categories = [
+    { id: 'general', label: 'Home' },
+    { id: 'india', label: 'My India' },
+    { id: 'entertainment', label: 'Entertainment' },
+    { id: 'health', label: 'Health' },
+    { id: 'tech', label: 'Tech' },
+    { id: 'education', label: 'Education', className: 'tohide5' },
+    { id: 'robotics', label: 'Robotics', className: 'tohide4' },
+    { id: 'tourism', label: 'Tourism', className: 'tohide3' },
+    { id: 'Automobiles', label: 'Automobiles', className: 'tohide2' },
+    { id: 'Environment', label: 'Environment', className: 'tohide1' },
+  ];
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item">
-                            <div className="nav-link" style={{ cursor: "pointer" }} onClick={() => setCategory("general")}>
-                                Home
-                            </div>
-                        </li>
-                        <li className="nav-item">
-                            <div className="nav-link" style={{ cursor: "pointer" }} onClick={() => setCategory("india")}>
-                                My India
-                            </div>
-                        </li>
-                        <li className="nav-item ">
-                            <div className="nav-link" style={{ cursor: "pointer" }} onClick={() => setCategory("entertainment")}>
-                                Entertainment
-                            </div>
-                        </li>
-                        <li className="nav-item ">
-                            <div className="nav-link" style={{ cursor: "pointer" }} onClick={() => setCategory("health")}>
-                                Health
-                            </div>
-                        </li>
-                        <li className="nav-item ">
-                            <div className="nav-link" style={{ cursor: "pointer" }} onClick={() => setCategory("tech")}>
-                                Tech
-                            </div>
-                        </li>
-                        <li className="nav-item ">
-                            <div className="nav-link" style={{ cursor: "pointer" }} onClick={() => setCategory("education")}>
-                                Education
-                            </div>
-                        </li>
-                        <li className="nav-item ">
-                            <div className="nav-link" style={{ cursor: "pointer" }} onClick={() => setCategory("robotics")}>
-                                Robotics
-                            </div>
-                        </li>
-                        <li className="nav-item ">
-                            <div className="nav-link" style={{ cursor: "pointer" }} onClick={() => setCategory("tourism")}>
-                                Tourism
-                            </div>
-                        </li>
-                        <li className="nav-item ">
-                            <div className="nav-link" style={{ cursor: "pointer" }} onClick={() => setCategory("Automobiles")}>
-                                Automobiles
-                            </div>
-                        </li>
-                        <li className="nav-item ">
-                            <div className="nav-link" style={{ cursor: "pointer" }} onClick={() => setCategory("Environment")}>
-                                Environment
-                            </div>
-                        </li>
+  const toggleCategories = () => {
+    setShowCategories(!showCategories);
+  };
 
-                    </ul>
-
-                    <SearchBar onSearch={onSearch} />
-                </div>
-            </nav>
+  return (
+    <div style={{
+      position: "relative",
+      bottom: "24px",
+    }} className=' '>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="navbar-brand">
+          <span className="badge bg-dark text-light rounded-circle">A2Z</span>
         </div>
-    );
-};
+        <button
+          className="navbar-toggler collapsed"
+          type="button"
+          onClick={toggleCategories}
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          {/* Conditional rendering for toggler icon */}
+          {showCategories ? (
+            <span className="navbar-toggler-icon close-icon"></span>
+          ) : (
+            <span className="navbar-toggler-icon"></span>
+          )}
+        </button>
 
+        <div className={`collapse navbar-collapse ${showCategories ? 'show' : ''}`} id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto">
+            {categories.map((category) => (
+              <li key={category.id} className="nav-item">
+                <div
+                  className={`nav-link ${category.className}`}
+                  onClick={() => setCategory(category.id)}
+                >
+                  {category.label}
+                </div>
+              </li>
+            ))}
+
+
+          </ul>
+
+          <SearchBar onSearch={onSearch} />
+        </div>
+      </nav>
+    </div >
+  );
+};

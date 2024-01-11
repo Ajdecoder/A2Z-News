@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import { BeatLoader } from 'react-spinners';
+import { PacmanLoader } from 'react-spinners';
 
 const override = css`
   display: block;
@@ -10,8 +10,18 @@ const override = css`
 
 const LoadingSpinner = () => {
   return (
-    <div className="sweet-loading text-center mt-5">
-      <BeatLoader color={'#36D7B7'} css={override} size={15} />
+    <div
+      className="sweet-loading text-center"
+      style={{
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflowX: 'hidden',
+        background: 'linear-gradient(to right, #0cebeb, #20e3b2, #29ffc6)',
+      }}
+    >
+      <PacmanLoader size={28} />
     </div>
   );
 };

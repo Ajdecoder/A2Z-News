@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { Newsboard } from "./components/Newsboard";
 import LoadingSpinner from "./components/LoadingSpinner";
+import Home from "./components/Home";
 
 function App() {
   const [category, setCategory] = useState("general");
@@ -45,16 +46,19 @@ function App() {
 
   return (
     <div className="bg-dark overflow-y-hidden">
+      <Home/>
       <Navbar setCategory={setCategory} onSearch={handleSearch} />
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <Newsboard
-          category={category}
-          searchResults={searchResults}
-          loading={loading}
-          error={error}
-        />
+        <>
+          <Newsboard
+            category={category}
+            searchResults={searchResults}
+            loading={loading}
+            error={error}
+          />
+        </>
       )}
     </div>
   );

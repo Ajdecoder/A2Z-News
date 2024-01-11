@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NewsItem } from "./NewsItem";
+import LoadingSpinner from "./LoadingSpinner";
 
 export const Newsboard = ({ category }) => {
   const [articles, setArticles] = useState([]);
@@ -33,7 +34,7 @@ export const Newsboard = ({ category }) => {
   }, [category]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner />;
   }
 
   if (error) {
@@ -46,7 +47,7 @@ export const Newsboard = ({ category }) => {
         A2Z <span className="badge bg-warning mb-2 font-weight-bold">News</span>
       </h2>
       <hr />
-      <div className="row">
+      <div className="row mt-5">  
         {articles &&
           articles
             .filter(
@@ -54,12 +55,13 @@ export const Newsboard = ({ category }) => {
                 news.title && news.description && news.url && news.urlToImage
             )
             .map((filteredNews, index) => (
-              <div key={index} className="col-md-4 mb-3">
+              <div key={index} className="col-md-4 mb-3 ">
                 <NewsItem
                   title={filteredNews.title}
                   description={filteredNews.description}
                   src={filteredNews.urlToImage}
                   url={filteredNews.url}
+                  PublishDate = {filteredNews.publishedAt}
                 />
               </div>
             ))}

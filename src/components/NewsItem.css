@@ -1,71 +1,98 @@
 .card:hover {
-    transform: scale(1.1);
-    border: 5px solid rgb(111, 0, 255);
-    text-align:start;
-    box-shadow: -2px -1px 11px 15px #48e048;
+  transform: scale(1.1);
+  border: 5px solid rgb(111, 0, 255);
+  text-align:left;
+  box-shadow: -2px -1px 11px 15px #e09148;
+  display: inline;
+  overflow: unset;
+}
+.card:hover .card-text{
+  text-align:start;
+}
+
+.card {
+  max-width: 20rem;
+  max-height: 23rem;
+  border-radius: 31px;
+  padding: 15px;
+  transition: all 0.3s ease-in-out;
+  text-align: left;
+}
+
+.card-text{
+  text-align: -webkit-left;
+}
+
+@media (max-width: 1004px) {
+  .tohide1 {
+    display: none;
   }
-  
-  .card {
-    max-width: 20rem;
-    max-height: 23rem;
-    border-radius: 31px;
-    padding: 5px;
+}
+
+@media (max-width: 1110px) {
+  .tohide2 {
+    display: none;
+  }
+}
+
+@media (max-width: 1216px) {
+  .tohide3 {
+    display: none;
+  }
+}
+
+@media (max-width: 1038px) {
+  .tohide4 {
+    display: none;
+  }
+}
+
+@media (max-width: 1146px) {
+  .tohide5 {
+    display: none;
+  }
+}
+
+
+@media (min-width: 516px) and (max-width: 766px) {
+  .tocenter {
+    position: relative;
+    left: 4rem;
+  }
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.form-control{
+    border-radius: 34px;
+    border-color: red green blue rgb(0, 195, 255);
+}
+.btn{
+    border-radius: 14px;
     transition: all 0.3s ease-in-out;
-    text-align: left;
-  }
-  
-  @media (max-width: 1004px) {
-    .tohide1 {
-      display: none;
-    }
-  }
-  
-  @media (max-width: 1110px) {
-    .tohide2 {
-      display: none;
-    }
-  }
-  
-  @media (max-width: 1216px) {
-    .tohide3 {
-      display: none;
-    }
-  }
-  
-  @media (max-width: 1038px) {
-    .tohide4 {
-      display: none;
-    }
-  }
-  
-  @media (max-width: 1146px) {
-    .tohide5 {
-      display: none;
-    }
-  }
-  
-  @media (max-width: 766px) {
-    .tocenter {
-      width: 34rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-  
-  .nav-link {
-    cursor: pointer;
-  }
-  
-  .form-control{
-      border-radius: 34px;
-      border-color: red green blue rgb(0, 195, 255);
-  }
-  .btn{
-      border-radius: 14px;
-      transition: all 0.3s ease-in-out;
-  }
-  .btn:hover{
-      transform: scale(1.1);
-  }
-  
+}
+.btn:hover{
+    transform: scale(1.1);
+}
+
+.card-date{
+  font-size: smaller;
+}
+
+.card-title{
+font-size: medium;
+}
+
+.card-text{
+font-size: small;
+}
+
+.navbar-toggler-icon {
+  transition: transform 0.3s ease;
+}
+
+.close-icon {
+  transform: rotate(180deg);
+}
