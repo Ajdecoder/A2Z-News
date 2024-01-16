@@ -12,15 +12,15 @@ export const Newsboard = ({ category }) => {
       try {
         setLoading(true);
         setError(null);
-
-        let URL = `https://newsapi.org/v2/everything?q=${category}&apiKey=${process.env.REACT_APP_API_KEY}`;
+        let apikey = process.env.REACT_APP_API_KEY;
+        let URL = `https://newsapi.org/v2/everything?q=${category}&apiKey=${apikey}`;
         const response = await fetch(URL);
         const data = await response.json();
 
         if (response.ok) {
           setArticles(data.articles);
         } else {
-          setError("Failed to fetch news data");
+          setError("No News Here");
         }
       } catch (error) {
         console.error("Error fetching news data:", error);
@@ -38,13 +38,13 @@ export const Newsboard = ({ category }) => {
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return <h3 style={{top:"15rem"}} className=" text-center position-relative"> {error}</h3>;
   }
 
   return (
     <div className="container">
-      <h2 className="text-center mt-3 font-weight-bold">
-        A2Z <span className="badge bg-warning mb-2 font-weight-bold">News</span>
+      <h2 className="text-center mt-5 font-weight-bold">
+        A2Z <span className=" mt-4 badge bg-warning mb-2 font-weight-bold">News</span>
       </h2>
       <hr />
       <div className="row mt-5">  

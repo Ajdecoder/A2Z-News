@@ -26,7 +26,7 @@ export const Navbar = ({ setCategory, onSearch }) => {
       position: "relative",
       bottom: "24px",
     }} className=' '>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className=" fixed-top navbar navbar-expand-lg navbar-light bg-light">
         <div className="navbar-brand">
           <span className="badge bg-dark text-light rounded-circle">A2Z</span>
         </div>
