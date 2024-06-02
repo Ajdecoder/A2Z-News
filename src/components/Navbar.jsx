@@ -21,6 +21,13 @@ export const Navbar = ({ setCategory, onSearch }) => {
     setShowCategories(!showCategories);
   };
 
+  const onSearchHandler = (searchQuery) => {
+    // Call the onSearch function passed as a prop with the search query
+    onSearch(searchQuery);
+    // Optionally, you can close the categories dropdown or perform other actions
+    setShowCategories(false);
+  };
+
   return (
     <div style={{
       position: "relative",
@@ -61,7 +68,7 @@ export const Navbar = ({ setCategory, onSearch }) => {
 
           </ul>
 
-          <SearchBar onSearch={onSearch} />
+          <SearchBar onSearch={onSearchHandler} />
         </div>
       </nav>
     </div >

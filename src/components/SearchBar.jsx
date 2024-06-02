@@ -10,6 +10,7 @@ const SearchBar = ({ onSearch }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     onSearch(searchQuery);
+    setSearchQuery('');
   };
 
   return (
@@ -24,7 +25,7 @@ const SearchBar = ({ onSearch }) => {
           onChange={handleInputChange}
         />
         <button
-          className="btn btn-outline-success my-2 my-sm-0 "
+          className="btn btn-outline-success my-2 my-sm-0"
           type="submit"
         >
           Search
