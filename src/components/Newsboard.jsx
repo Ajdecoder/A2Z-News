@@ -16,9 +16,8 @@ export const Newsboard = ({ category }) => {
         console.log("api key: ",apikey);
         let URL = `https://newsapi.org/v2/everything?q=${category}&apiKey=${apikey}`;
         const response = await fetch(URL, {
+          method: "GET",
           "Content-Type": "application/json",
-          Accept: "application/json",
-          "Upgrade-Insecure-Requests": "1",
         });
         const data = await response.json();
 
