@@ -14,7 +14,11 @@ export const Newsboard = ({ category }) => {
         setError(null);
         let apikey = process.env.REACT_APP_API_KEY;
         let URL = `https://newsapi.org/v2/everything?q=${category}&apiKey=${apikey}`;
-        const response = await fetch(URL);
+        const response = await fetch(URL, {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Upgrade-Insecure-Requests": "1",
+        });
         const data = await response.json();
 
         if (response.ok) {
@@ -38,16 +42,24 @@ export const Newsboard = ({ category }) => {
   }
 
   if (error) {
-    return <h3 style={{top:"15rem"}} className=" text-center position-relative"> {error}</h3>;
+    return (
+      <h3 style={{ top: "15rem" }} className=" text-center position-relative">
+        {" "}
+        {error}
+      </h3>
+    );
   }
 
   return (
     <div className="container">
       <h2 className="text-center mt-5 font-weight-bold">
-        A2Z <span className=" mt-4 badge bg-warning mb-2 font-weight-bold">News</span>
+        A2Z{" "}
+        <span className=" mt-4 badge bg-warning mb-2 font-weight-bold">
+          News
+        </span>
       </h2>
       <hr />
-      <div className="row mt-5">  
+      <div className="row mt-5">
         {articles &&
           articles
             .filter(
@@ -61,7 +73,7 @@ export const Newsboard = ({ category }) => {
                   description={filteredNews.description}
                   src={filteredNews.urlToImage}
                   url={filteredNews.url}
-                  PublishDate = {filteredNews.publishedAt}
+                  PublishDate={filteredNews.publishedAt}
                 />
               </div>
             ))}
