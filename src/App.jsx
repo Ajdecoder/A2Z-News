@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
-import { Newsboard } from './components/Newsboard';
-import LoadingSpinner from './components/LoadingSpinner';
+import React, { useState, useEffect } from "react";
+import { Navbar } from "./components/Navbar";
+import { Newsboard } from "./components/Newsboard";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
-  const [category, setCategory] = useState('general');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [category, setCategory] = useState("general");
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -24,10 +24,10 @@ function App() {
         if (response.ok) {
           setSearchResults(data.articles);
         } else {
-          setError('Failed to fetch data');
+          setError("Failed to fetch data");
         }
       } catch (error) {
-        setError('An error occurred while fetching data');
+        setError("An error occurred while fetching data");
       } finally {
         setLoading(false);
       }
