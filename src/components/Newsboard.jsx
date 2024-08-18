@@ -13,7 +13,6 @@ export const Newsboard = ({ category }) => {
         setLoading(true);
         setError(null);
         let apikey = process.env.REACT_APP_API_KEY;
-        console.log("api key: ",apikey);
         let URL = `https://newsapi.org/v2/everything?q=${category}&apiKey=${apikey}`;
         const response = await fetch(URL, {
           method: "GET",
